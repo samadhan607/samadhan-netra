@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivicConnect - Smart Civic Issue Reporting System for India</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🏛️</span>
+                    <h1 class="logo-text">Samadhan Netra</h1>
+                    <span class="logo-tagline">भारत से,भारत के लिए</span>
+                </div>
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="home">Home</button>
+                    <button class="nav-btn" data-section="report">Report Issue</button>
+                    <button class="nav-btn" data-section="dashboard">Dashboard</button>
+                    <button class="nav-btn" data-section="admin">Admin</button>
+                    <button class="nav-btn" data-section="analytics">Analytics</button>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn btn--outline btn--sm" id="languageToggle">हिं/EN</button>
+                    <button class="btn btn--outline btn--sm" id="themeToggle">🌙</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1 class="hero-title">Empowering Citizens, <br>Building Better India</h1>
+                            <p class="hero-subtitle">नागरिकों की आवाज़, सरकार तक पहुंचे। Report civic issues, track progress, and build a transparent democracy.</p>
+                            <div class="hero-stats">
+                                <div class="stat">
+                                    <div class="stat-number">34,567</div>
+                                    <div class="stat-label">Active Citizens</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">1,247</div>
+                                    <div class="stat-label">Issues Reported</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">967</div>
+                                    <div class="stat-label">Issues Resolved</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">78%</div>
+                                    <div class="stat-label">Satisfaction Rate</div>
+                                </div>
+                            </div>
+                            <div class="hero-actions">
+                                <button class="btn btn--primary btn--lg" data-section="report">Report an Issue</button>
+                                <button class="btn btn--secondary btn--lg" data-section="dashboard">View Issues</button>
+                            </div>
+                        </div>
+                        <div class="hero-image">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1756621651/pplx_project_search_images/58d06bd15f99df33cc5b407f800b7abe8434e882.png" alt="Civic App Interface" class="hero-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features">
+                <div class="container">
+                    <h2 class="section-title">How CivicConnect Works</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">📱</div>
+                            <h3>Easy Reporting</h3>
+                            <p>Report issues with photos, location, and descriptions in seconds</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔍</div>
+                            <h3>Real-time Tracking</h3>
+                            <p>Monitor progress and get updates on your reported issues</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🏛️</div>
+                            <h3>Government Dashboard</h3>
+                            <p>Officials can manage, assign, and resolve issues efficiently</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <h3>Analytics & Insights</h3>
+                            <p>Data-driven insights for better civic planning and governance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Preview -->
+            <div class="categories-preview">
+                <div class="container">
+                    <h2 class="section-title">Issue Categories</h2>
+                    <div class="categories-grid" id="categoriesPreview">
+                        <!-- Categories will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Report Issue Section -->
+        <section id="report" class="section">
+            <div class="container">
+                <div class="report-header">
+                    <h2 class="section-title">Report a Civic Issue</h2>
+                    <p class="section-subtitle">समस्या की रिपोर्ट करें और समुदाय की मदद करें</p>
+                </div>
+                <div class="report-form-container">
+                    <form id="reportForm" class="report-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Issue Title *</label>
+                                <input type="text" class="form-control" id="issueTitle" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Category *</label>
+                                <select class="form-control" id="issueCategory" required>
+                                    <option value="">Select Category</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Priority Level *</label>
+                                <select class="form-control" id="issuePriority" required>
+                                    <option value="">Select Priority</option>
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                    <option value="Emergency">Emergency</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Location *</label>
+                            <input type="text" class="form-control" id="issueLocation" placeholder="Enter detailed address" required>
+                            <button type="button" class="btn btn--outline btn--sm" id="getCurrentLocation">📍 Use Current Location</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Description *</label>
+                            <textarea class="form-control" id="issueDescription" rows="4" placeholder="Describe the issue in detail..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Photo Upload</label>
+                            <div class="file-upload">
+                                <input type="file" id="issuePhoto" accept="image/*" multiple>
+                                <label for="issuePhoto" class="file-upload-label">
+                                    📷 Add Photos (Optional)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Your Name *</label>
+                                <input type="text" class="form-control" id="reporterName" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Contact Number *</label>
+                                <input type="tel" class="form-control" id="reporterContact" required>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn--primary btn--full-width">Submit Issue Report</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h2 class="section-title">Public Issues Dashboard</h2>
+                    <div class="dashboard-controls">
+                        <div class="search-box">
+                            <input type="text" class="form-control" id="searchIssues" placeholder="Search issues...">
+                        </div>
+                        <div class="filter-controls">
+                            <select class="form-control" id="filterCategory">
+                                <option value="">All Categories</option>
+                            </select>
+                            <select class="form-control" id="filterStatus">
+                                <option value="">All Statuses</option>
+                                <option value="Reported">Reported</option>
+                                <option value="Assigned">Assigned</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Under Review">Under Review</option>
+                                <option value="Resolved">Resolved</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="totalIssuesCount">0</div>
+                            <div class="stat-label">Total Issues</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="pendingIssuesCount">0</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="resolvedIssuesCount">0</div>
+                            <div class="stat-label">Resolved</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="avgResolutionTime">0</div>
+                            <div class="stat-label">Avg Resolution</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="issues-container" id="issuesContainer">
+                    <!-- Issues will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section id="admin" class="section">
+            <div class="container">
+                <div class="admin-login" id="adminLogin">
+                    <div class="login-card">
+                        <h2>Government Official Login</h2>
+                        <p>सरकारी अधिकारी लॉगिन</p>
+                        <form id="adminLoginForm">
+                            <div class="form-group">
+                                <label class="form-label">Department ID</label>
+                                <input type="text" class="form-control" id="departmentId" placeholder="Enter department ID" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" id="adminPassword" placeholder="Enter password" required>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                        </form>
+                        <p class="login-demo">Demo: ID: "mumbai_admin", Password: "admin123"</p>
+                    </div>
+                </div>
+
+                <div class="admin-dashboard hidden" id="adminDashboard">
+                    <div class="admin-header">
+                        <h2>Government Administration Panel</h2>
+                        <button class="btn btn--outline" id="adminLogout">Logout</button>
+                    </div>
+
+                    <div class="admin-stats">
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-number" id="adminNewIssues">0</div>
+                            <div class="admin-stat-label">New Issues</div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-number" id="adminAssignedIssues">0</div>
+                            <div class="admin-stat-label">Assigned</div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-number" id="adminInProgressIssues">0</div>
+                            <div class="admin-stat-label">In Progress</div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-number" id="adminResolvedIssues">0</div>
+                            <div class="admin-stat-label">Resolved Today</div>
+                        </div>
+                    </div>
+
+                    <div class="admin-controls">
+                        <select class="form-control" id="adminFilterStatus">
+                            <option value="">All Statuses</option>
+                            <option value="Reported">New Reports</option>
+                            <option value="Assigned">Assigned</option>
+                            <option value="In Progress">In Progress</option>
+                        </select>
+                        <button class="btn btn--secondary" id="bulkAssign">Bulk Assign</button>
+                        <button class="btn btn--outline" id="exportData">Export Data</button>
+                    </div>
+
+                    <div class="admin-issues" id="adminIssuesContainer">
+                        <!-- Admin issues will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="section">
+            <div class="container">
+                <h2 class="section-title">Analytics & Insights</h2>
+                <p class="section-subtitle">डेटा-संचालित अंतर्दृष्टि और रुझान</p>
+
+                <div class="analytics-grid">
+                    <div class="chart-card">
+                        <h3>Issues by Category</h3>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Resolution Trends</h3>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="trendsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Department Performance</h3>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Geographic Distribution</h3>
+                        <div class="chart-container" style="position: relative; height: 300px;">
+                            <canvas id="geoChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="transparency-section">
+                    <h3>Transparency & Accountability</h3>
+                    <div class="transparency-cards">
+                        <div class="transparency-card">
+                            <h4>🔐 Blockchain Ledger</h4>
+                            <p>All issue updates are recorded in an immutable blockchain-style ledger for complete transparency.</p>
+                            <button class="btn btn--outline btn--sm">View Ledger</button>
+                        </div>
+                        <div class="transparency-card">
+                            <h4>⏱️ Response Time Tracking</h4>
+                            <p>Government response times are monitored and publicly available for accountability.</p>
+                            <div class="response-time">Avg Response: <strong>2.4 days</strong></div>
+                        </div>
+                        <div class="transparency-card">
+                            <h4>👥 Community Verification</h4>
+                            <p>Citizens can verify issue resolution through photos and community voting.</p>
+                            <div class="verification-rate">Verification Rate: <strong>91%</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Issue Detail Modal -->
+    <div id="issueModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalIssueTitle">Issue Details</h3>
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+            <div class="modal-body" id="modalIssueContent">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div id="notification" class="notification hidden">
+        <div class="notification-content">
+            <span id="notificationMessage"></span>
+            <button id="closeNotification">×</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
